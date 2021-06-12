@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { CacheServico } from './servicos/CacheServico';
+import rotaStatus from './rotas/status.rota';
 
 export class App {
     constructor(
@@ -10,6 +11,7 @@ export class App {
         this.addMiddlewares();
         this.listen();
         this.iniciarCache();
+        this.criarRotas();
     }
 
     private addMiddlewares = (): void => {
@@ -43,6 +45,10 @@ export class App {
         ];
 
         cache.salvarMultiplos(cacheInicial);
+    };
+
+    private criarRotas = (): void => {
+        this.express.use('/status', rotaStatus);
     };
 
     public get express(): express.Application {

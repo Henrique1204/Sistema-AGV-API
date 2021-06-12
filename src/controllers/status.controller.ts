@@ -14,8 +14,8 @@ export class StatusController {
         try {
             const { status, velocidade } = req.body;
 
-            if (!velocidade && (status === null || status === undefined)) {
-                throw new ExceptionAPI('401');
+            if (!velocidade || status === undefined) {
+                throw new ExceptionAPI('400');
             }
 
             if (typeof status !== 'boolean' || typeof velocidade !== 'string') {
