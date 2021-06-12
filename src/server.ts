@@ -1,1 +1,4 @@
-console.log('Oi');
+import { App } from './App';
+
+const Server = new App();
+Server.express;
