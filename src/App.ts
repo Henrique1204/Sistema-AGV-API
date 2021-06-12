@@ -12,7 +12,7 @@ export class App {
         this.iniciarCache();
     }
 
-    private addMiddlewares = () => {
+    private addMiddlewares = (): void => {
         this.express.use(express.json());
         this.express.use(express.urlencoded({ extended: false }));
 
