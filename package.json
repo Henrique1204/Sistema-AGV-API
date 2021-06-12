@@ -1,0 +1,52 @@
+{
+  "name": "sistema-agv-api",
+  "version": "1.0.0",
+  "description": "API contstruida para armazenar e compartilhar informações de um robô de entrega do SENAI Suiço Brasileira.",
+  "main": "src/server.ts",
+  "scripts": {
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts",
+    "test": "jest",
+    "test:silent": "jest --watchAll --silent --noStackTrace",
+    "test:coverage": "jest --coverage --silent --noStackTrace"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Henrique1204/Sistema-AGV-API.git"
+  },
+  "keywords": [],
+  "author": "Paulo Henrique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Henrique1204/Sistema-AGV-API/issues"
+  },
+  "homepage": "https://github.com/Henrique1204/Sistema-AGV-API#readme",
+  "dependencies": {
+    "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.23",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jest": "^27.0.4",
+    "node-cache": "^5.1.2",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/cors": "^2.8.10",
+    "@types/node-cache": "^4.2.5",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.23.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "ts-node-dev": "^1.1.6",
+    "tsconfig-paths": "^3.9.0"
+  }
+}
