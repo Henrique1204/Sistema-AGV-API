@@ -5,7 +5,7 @@ const mensagens = {
     '404': 'Dados não encontrados.',
     '406': 'Dados inválidos.',
     '422': 'Informações já existem no banco de dados.',
-    '502': 'Erro ao realizar operação no banco de dados.'
+    '502': 'Erro ao salvar ou buscar dados.'
 };
 
 type Mensagens = typeof mensagens;
