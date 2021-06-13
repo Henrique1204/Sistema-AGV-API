@@ -35,7 +35,7 @@ export class App {
                 val: {
                     status: 'desconhecido',
                     velocidade: '0m/s',
-                    dataRegistro: new Date().toISOString()
+                    dataRegistro: new Date()
                 }
             },
             {

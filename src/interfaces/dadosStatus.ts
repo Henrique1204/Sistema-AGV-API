@@ -6,5 +6,5 @@ export interface StatusRequest {
 export interface Status {
     status: 'ativo' | 'inativo';
     velocidade: string;
-    dataRegistro: string;
+    dataRegistro: Date;
 }

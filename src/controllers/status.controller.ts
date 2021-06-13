@@ -30,7 +30,7 @@ export class StatusController {
 
     public static get = (req: Request, res: Response) => {
         try {
-            const dados = StatusRepositorie.buscarSatus();
+            const dados = StatusRepositorie.buscarStatus();
 
             if (!dados) throw new ExceptionAPI('502');
 
