@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
 import { ExceptionAPI } from '../util/ExceptionAPI';
-import { CacheServico } from '../servicos/CacheServico';
-import { FormatarDados } from '../util/FormatarDados';
 import { StatusRepositorie } from '../repositories/Status.repositorie';
 
 export class StatusController {

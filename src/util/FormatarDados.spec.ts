@@ -8,4 +8,17 @@ describe('Testando formatação de dados', () => {
         expect(retorno).toHaveProperty('velocidade');
         expect(retorno).toHaveProperty('dataRegistro');
     });
+
+    it('Deveria retornar um objeto com nome, status, descricao e dataRegistro', () => {
+        const retorno = FormatarDados.formatarSensores({
+            nome: 'Sensor A',
+            status: true,
+            condicao: false
+        });
+
+        expect(retorno).toHaveProperty('nome');
+        expect(retorno).toHaveProperty('status');
+        expect(retorno).toHaveProperty('descricao');
+        expect(retorno).toHaveProperty('dataRegistro');
+    });
 });
