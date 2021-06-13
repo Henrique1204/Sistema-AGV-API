@@ -14,18 +14,21 @@
                 {
                     "sensor": "Sensor A",
                     "status": "ativo",
+                    "condicao": "funcionando",
                     "descricao": "Sem ocorrências",
                     "dataRegistro": "2021-06-13T04:29:43.201Z"
                 },
                 {
                     "sensor": "Sensor B",
                     "status": "inativo",
+                    "condicao": "funcionando",
                     "descricao": "Ocorreu um problema",
                     "dataRegistro": "2021-06-13T04:29:43.201Z"
                 },
                 {
-                    "sensor": "Sensor A",
+                    "sensor": "Sensor C",
                     "status": "ativo",
+                    "condicao": "danificado",
                     "descricao": "Sem ocorrências",
                     "dataRegistro": "2021-06-13T04:29:43.201Z"
                 }
