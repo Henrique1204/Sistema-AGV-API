@@ -9,15 +9,15 @@ export class SensoresRepositorie {
     };
 
     public static salvarSensores = (dados: SensoresRequest) => {
-        const sensoresCache = SensoresRepositorie.buscarSensores();
+        const sensores = SensoresRepositorie.buscarSensores();
 
         const cache = CacheServico.getCache();
-        const dadosFormatados = FormatarDados.formatarSensores(dados);
+        const sensor = FormatarDados.formatarSensor(dados);
 
-        const sensores = sensoresCache.map((sensor) => {
-            if (sensor.nome === dadosFormatados.nome) return dadosFormatados;
-            else return sensor;
-        });
+        const indice = sensores.findIndex(({ nome }) => nome === sensor.nome);
+
+        if (indice === -1) sensores.push(sensor);
+        else sensores[indice] = sensor;
 
         return cache.salvar<Sensores[]>('sensores', sensores);
     };

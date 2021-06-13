@@ -10,7 +10,7 @@ describe('Testando formatação de dados', () => {
     });
 
     it('Deveria retornar um objeto com nome, status, descricao e dataRegistro', () => {
-        const retorno = FormatarDados.formatarSensores({
+        const retorno = FormatarDados.formatarSensor({
             nome: 'Sensor A',
             status: true,
             condicao: false
