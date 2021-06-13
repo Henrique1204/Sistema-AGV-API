@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { CacheServico } from './servicos/CacheServico';
 import rotaStatus from './rotas/status.rota';
+import rotaSensores from './rotas/sensores.rota';
 
 export class App {
     constructor(
@@ -49,6 +50,7 @@ export class App {
 
     private criarRotas = (): void => {
         this.express.use('/status', rotaStatus);
+        this.express.use('/sensores', rotaSensores);
     };
 
     public get express(): express.Application {
