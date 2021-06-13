@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { ExceptionAPI } from '../util/ExceptionAPI';
 import { CacheServico } from '../servicos/CacheServico';
 import { FormatarDados } from '../util/FormatarDados';
+import { StatusRepositorie } from '../repositories/Status.repositorie';
 
 export class StatusController {
     public static post = (req: Request, res: Response) => {
@@ -16,10 +17,7 @@ export class StatusController {
                 throw new ExceptionAPI('406');
             }
 
-            const cache = CacheServico.getCache();
-            const dados = FormatarDados.formatarStatus({ status, velocidade });
-            const sucesso = cache.salvar('status', dados);
-
+            const sucesso = StatusRepositorie.salvarStatus({ status, velocidade });
             if (!sucesso) throw new ExceptionAPI('502');
 
             return res.status(201).send({ sucesso, mensagem: 'Dados salvos!' });
@@ -32,8 +30,7 @@ export class StatusController {
 
     public static get = (req: Request, res: Response) => {
         try {
-            const cache = CacheServico.getCache();
-            const dados = cache.buscar('status');
+            const dados = StatusRepositorie.buscarSatus();
 
             if (!dados) throw new ExceptionAPI('502');
 
