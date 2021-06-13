@@ -3,6 +3,7 @@ import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import swaggerDoc from './swagger.json';
 import { CacheServico } from './servicos/CacheServico';
+import cacheInicial from './mockCacheInicial.json';
 import rotaStatus from './rotas/status.rota';
 import rotaSensores from './rotas/sensores.rota';
 
@@ -34,22 +35,7 @@ export class App {
 
     private iniciarCache = (): void => {
         const cache = CacheServico.getCache();
-        const cacheInicial = [
-            {
-                key: 'status',
-                val: {
-                    status: 'desconhecido',
-                    velocidade: '0m/s',
-                    dataRegistro: new Date()
-                }
-            },
-            {
-                key: 'sensores',
-                val: []
-            }
-        ];
-
-        cache.salvarMultiplos(cacheInicial);
+        cache.salvarMultiplos(cacheInicial.dados);
     };
 
     private criarRotas = (): void => {

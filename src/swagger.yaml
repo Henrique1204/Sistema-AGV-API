@@ -31,6 +31,9 @@ components:
           status:
             type: string
             enum: ['ativo', 'inativo']
+          condicao:
+            type: string
+            enum: ['funcionando', 'danificado']
           descricao:
             type: string
             example: 'Sem ocorrências.'

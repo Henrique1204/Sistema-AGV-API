@@ -1,0 +1,35 @@
+{
+    "dados": [
+        {
+            "key": "status",
+            "val": {
+                "status": "desconhecido",
+                "velocidade": "0m/s",
+                "dataRegistro": "2021-06-13T04:29:43.201Z"
+            }
+        },
+        {
+            "key": "sensores",
+            "val": [
+                {
+                    "sensor": "Sensor A",
+                    "status": "ativo",
+                    "descricao": "Sem ocorrências",
+                    "dataRegistro": "2021-06-13T04:29:43.201Z"
+                },
+                {
+                    "sensor": "Sensor B",
+                    "status": "inativo",
+                    "descricao": "Ocorreu um problema",
+                    "dataRegistro": "2021-06-13T04:29:43.201Z"
+                },
+                {
+                    "sensor": "Sensor A",
+                    "status": "ativo",
+                    "descricao": "Sem ocorrências",
+                    "dataRegistro": "2021-06-13T04:29:43.201Z"
+                }
+            ]
+        }
+    ]
+}

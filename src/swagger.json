@@ -45,6 +45,13 @@
                             "inativo"
                         ]
                     },
+                    "condicao": {
+                        "type": "string",
+                        "enum": [
+                            "funcionando",
+                            "danificado"
+                        ]
+                    },
                     "descricao": {
                         "type": "string",
                         "example": "Sem ocorrências."

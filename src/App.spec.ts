@@ -1,5 +1,6 @@
 import { App } from './App';
 import request from 'supertest';
+import { CacheServico } from './servicos/CacheServico';
 
 const Server = new App();
 
@@ -59,8 +60,11 @@ describe('Testando Rota Sensores', () => {
         const sut = Server.express;
         const res = await request(sut).get('/sensores');
 
+        const cache = CacheServico.getCache();
+        const sensores = cache.buscar('sensores');
+
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toEqual(new Array());
+        expect(res.body).toEqual(sensores);
     });
 
     it('Deveria retornar sucesso como true e código 201', async () => {

@@ -11,6 +11,7 @@ export class FormatarDados {
     public static formatarSensor = (dados: SensoresRequest): Sensores => ({
         sensor: dados.nome,
         status: (dados.status) ? 'ativo' : 'inativo',
+        condicao: (dados.condicao) ? 'funcionando' : 'danificado',
         descricao: (dados.condicao) ? 'Sem ocorrências' : 'Sensor está com defeito',
         dataRegistro: new Date()
     });
