@@ -1,13 +1,7 @@
 import { Request, Response } from 'express';
 import { ExceptionAPI } from '../util/ExceptionAPI';
 import { CacheServico } from '../servicos/CacheServico';
-import { StatusCache } from '../interfaces/dadosCache';
-
-const fomatarDadosCache = (status: boolean, velocidade: string): StatusCache => ({
-    status: (status) ? 'ativo' : 'inativo',
-    velocidade,
-    dataRegistro: new Date().toISOString()
-});
+import { FormatarDados } from '../util/FormatarDados';
 
 export class StatusController {
     public static post = (req: Request, res: Response) => {
@@ -23,7 +17,8 @@ export class StatusController {
             }
 
             const cache = CacheServico.getCache();
-            const sucesso = cache.salvar('status', fomatarDadosCache(status, velocidade));
+            const dados = FormatarDados.formatarStatus({ status, velocidade });
+            const sucesso = cache.salvar('status', dados);
 
             if (!sucesso) throw new ExceptionAPI('502');
 
