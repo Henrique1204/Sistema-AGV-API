@@ -5,7 +5,7 @@ export interface SensoresRequest {
 }
 
 export interface Sensores {
-    nome: string;
+    sensor: string;
     status: 'ativo' | 'inativo';
     descricao: string;
     dataRegistro: Date;

@@ -16,7 +16,7 @@ describe('Testando formatação de dados', () => {
             condicao: false
         });
 
-        expect(retorno).toHaveProperty('nome');
+        expect(retorno).toHaveProperty('sensor');
         expect(retorno).toHaveProperty('status');
         expect(retorno).toHaveProperty('descricao');
         expect(retorno).toHaveProperty('dataRegistro');

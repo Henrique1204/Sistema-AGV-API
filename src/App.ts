@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import swaggerUI from 'swagger-ui-express';
+import swaggerDoc from './swagger.json';
 import { CacheServico } from './servicos/CacheServico';
 import rotaStatus from './rotas/status.rota';
 import rotaSensores from './rotas/sensores.rota';
@@ -20,6 +22,8 @@ export class App {
         this.express.use(express.urlencoded({ extended: false }));
 
         this.express.use(cors({ origin: true, credentials: true }));
+
+        this.express.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
     };
 
     private listen = (): void => {

@@ -1,0 +1,338 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sistema AGV API",
+        "description": "API desenvolvida para armazenar e compartilhar informações de um robô de entrega do SENAI Suiço Brasileira.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor local para desenvolvimento e testes."
+        }
+    ],
+    "components": {
+        "schemas": {
+            "status": {
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ativo",
+                            "inativo"
+                        ]
+                    },
+                    "velocidade": {
+                        "type": "string",
+                        "example": "0m/s"
+                    },
+                    "dataRegistro": {
+                        "type": "string",
+                        "example": "2021-06-13T04:29:43.201Z"
+                    }
+                }
+            },
+            "sensores": {
+                "properties": {
+                    "sensor": {
+                        "type": "string",
+                        "example": "Sensor A"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ativo",
+                            "inativo"
+                        ]
+                    },
+                    "descricao": {
+                        "type": "string",
+                        "example": "Sem ocorrências."
+                    },
+                    "dataRegistro": {
+                        "type": "string",
+                        "example": "2021-06-13T04:29:43.201Z"
+                    }
+                }
+            },
+            "sucesso": {
+                "properties": {
+                    "sucesso": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "mensagem": {
+                        "type": "string",
+                        "example": "Operação realizada com sucesso."
+                    }
+                }
+            },
+            "erro": {
+                "properties": {
+                    "sucesso": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "mensagem": {
+                        "type": "string",
+                        "example": "Explicação do erro."
+                    }
+                }
+            }
+        }
+    },
+    "paths": {
+        "/status": {
+            "get": {
+                "summary": "Busca informações do estado do robô.",
+                "tags": [
+                    "Status"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "JSON com os dados.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/status"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "502": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Atualiza as informações do estado do robô.",
+                "tags": [
+                    "Status"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "status": {
+                                        "type": "boolean",
+                                        "enum": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    "velocidade": {
+                                        "type": "string",
+                                        "example": "0m/s"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Item atualizado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/sucesso"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "Dados inválidos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "502": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sensores": {
+            "get": {
+                "summary": "Busca lista com as informações do estado dos sensores.",
+                "tags": [
+                    "Sensores"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "JSON com array de dados.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/sensores"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "502": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Atualiza a lista de informações dos sensores.",
+                "tags": [
+                    "Sensores"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "nome": {
+                                        "type": "string",
+                                        "example": "Sensor A"
+                                    },
+                                    "status": {
+                                        "type": "boolean",
+                                        "enum": [
+                                            true,
+                                            false
+                                        ]
+                                    },
+                                    "condicao": {
+                                        "type": "boolean",
+                                        "enum": [
+                                            true,
+                                            false
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Item atualizado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/sucesso"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "406": {
+                        "description": "Dados inválidos.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    },
+                    "502": {
+                        "description": "JSON com sucesso como false e mensagem de erro.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/erro"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

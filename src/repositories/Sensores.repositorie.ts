@@ -12,12 +12,12 @@ export class SensoresRepositorie {
         const sensores = SensoresRepositorie.buscarSensores();
 
         const cache = CacheServico.getCache();
-        const sensor = FormatarDados.formatarSensor(dados);
+        const novoSensor = FormatarDados.formatarSensor(dados);
 
-        const indice = sensores.findIndex(({ nome }) => nome === sensor.nome);
+        const indice = sensores.findIndex(({ sensor }) => sensor === novoSensor.sensor);
 
-        if (indice === -1) sensores.push(sensor);
-        else sensores[indice] = sensor;
+        if (indice === -1) sensores.push(novoSensor);
+        else sensores[indice] = novoSensor;
 
         return cache.salvar<Sensores[]>('sensores', sensores);
     };
