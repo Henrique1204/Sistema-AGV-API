@@ -4,8 +4,8 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerDoc from './swagger.json';
 import { CacheServico } from './servicos/CacheServico';
 import cacheInicial from './mockCacheInicial.json';
-import rotaStatus from './rotas/status.rota';
-import rotaSensores from './rotas/sensores.rota';
+import rotaStatus from './rotas/status';
+import rotaSensores from './rotas/sensores';
 
 export class App {
     constructor(

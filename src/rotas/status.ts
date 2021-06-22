@@ -1,4 +1,4 @@
-import { StatusController } from '../controllers/Status.controller';
+import { StatusController } from '../controllers/Status';
 import Router from 'express';
 
 const rotaStatus = Router();

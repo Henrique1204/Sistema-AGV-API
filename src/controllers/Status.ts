@@ -1,21 +1,21 @@
 import { Request, Response } from 'express';
 import { ExceptionAPI } from '../util/ExceptionAPI';
-import { SensoresRepositorie } from '../repositories/Sensores.repositorie';
+import { StatusRepositorie } from '../repositories/Status';
 
-export class SensoresController {
+export class StatusController {
     public static post = (req: Request, res: Response) => {
         try {
-            const { nome, status, condicao } = req.body;
+            const { status, velocidade } = req.body;
 
-            if (nome === undefined || status === undefined || condicao === undefined) {
+            if (velocidade === undefined || status === undefined) {
                 throw new ExceptionAPI('400');
             }
 
-            if (typeof nome !== 'string' || typeof status !== 'boolean' || typeof condicao !== 'boolean') {
+            if (typeof status !== 'boolean' || typeof velocidade !== 'string') {
                 throw new ExceptionAPI('406');
             }
 
-            const sucesso = SensoresRepositorie.salvarSensores({ nome, status, condicao });
+            const sucesso = StatusRepositorie.salvarStatus({ status, velocidade });
             if (!sucesso) throw new ExceptionAPI('502');
 
             return res.status(201).send({ sucesso, mensagem: 'Dados salvos!' });
@@ -28,7 +28,7 @@ export class SensoresController {
 
     public static get = (req: Request, res: Response) => {
         try {
-            const dados = SensoresRepositorie.buscarSensores();
+            const dados = StatusRepositorie.buscarStatus();
 
             if (!dados) throw new ExceptionAPI('502');
 
